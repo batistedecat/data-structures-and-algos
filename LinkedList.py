@@ -41,9 +41,9 @@ class LinkedList: #Doubly linked
         self.size += 1
 
     def remove(self, data):
-        curr = self.root
+        curr = self.head
         while curr:
-            if curr.get_data() = data:
+            if curr.get_data() == data:
                 next = curr.get_next()
                 prev = curr.get_prev()
 
@@ -60,11 +60,58 @@ class LinkedList: #Doubly linked
         return False #if no such node is found
 
 
-    def __str__(self):
+    def __repr__(self):
         curr = []
         this_node = self.head
         for i in range(self.size):
             curr.append(this_node.data)
             this_node = this_node.next
-        return ', '.join(curr)
 
+
+        return ', '.join(str(x) for x in curr)
+
+numbers = LinkedList()
+numbers.add(5)
+numbers.add(8)
+numbers.add(12)
+
+names = LinkedList()
+names.add("Ada")
+names.add("Linus")
+names.add("Guido")
+
+empty = LinkedList()
+
+print("numbers:", repr(numbers))
+print("names  :", repr(names))
+print("empty  :", repr(empty))
+
+print()
+print("length of numbers:", numbers.length())
+print("length of names  :", names.length())
+print("length of empty  :", empty.length())
+
+print()
+print("search(8)   ->", numbers.search(8))
+print("search(8)   ->", numbers.search(8).get_data())
+print("search(99)  ->", numbers.search(99))
+print("search Ada  ->", names.search("Ada").get_data())
+
+print()
+node = numbers.search(8)
+print("node 8, prev:", node.get_prev().get_data())
+print("node 8, next:", node.get_next().get_data())
+
+print()
+print("remove(8)  ->", numbers.remove(8))
+print("numbers now:", repr(numbers), "| length:", numbers.length())
+
+print("remove(12) ->", numbers.remove(12))
+print("numbers now:", repr(numbers), "| length:", numbers.length())
+
+print("remove(99) ->", numbers.remove(99))
+print("numbers now:", repr(numbers), "| length:", numbers.length())
+
+print()
+numbers.add(42)
+print("after add(42):", repr(numbers), "| length:", numbers.length())

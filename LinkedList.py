@@ -20,18 +20,28 @@ class Node:
         self.prev = prev
 
 class LinkedList: #Doubly linked
-    def __init__(self):
-        self.head = None
-        self.tail = None
+    def __init__(self, r = None, t = None):
+        self.head = r
+        self.tail = t
         self.size = 0
     #accessors
     def search(self, data):
         pass
     def length(self):
-        pass
+        return self.size
     #mutators
-    def add(self, new_data):
+
+
+    def Front_add(self, new_data): #few steps. still need for onother add??
+        new_node = Node(new_data)
+        if self.head:
+            self.head.set_prev(new_node)
+        self.head = new_node
+        self.size += 1
+    def Rear_add(self, new_data):
         pass
+
+
     def remove(self, data):
         pass
 

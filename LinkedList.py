@@ -19,5 +19,20 @@ class Node:
     def set_prev(self,prev):
         self.prev = prev
 
+class LinkedList: #Doubly linked
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.size = 0
+    #accessors
+    def search(self, data):
+        pass
+    def length(self):
+        pass
+    #mutators
+    def add(self, new_data):
+        pass
+    def remove(self, data):
+        pass
 
 

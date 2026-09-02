@@ -69,6 +69,20 @@ class LinkedList: #Doubly linked
 
 
         return ', '.join(str(x) for x in curr)
+    #extra shit
+    def sum(self):
+        curr = 0
+        this_node = self.head
+        while this_node is not None:
+            d = this_node.get_data()
+            if isinstance(this_node.data, int):
+                curr += d
+            this_node = this_node.next
+        return curr
+    def average(self):
+        sum = float(self.sum())
+        count = float(self.length())
+        return sum / count
 
 numbers = LinkedList()
 numbers.add(5)
@@ -115,3 +129,9 @@ print("numbers now:", repr(numbers), "| length:", numbers.length())
 print()
 numbers.add(42)
 print("after add(42):", repr(numbers), "| length:", numbers.length())
+print(numbers.search(5).get_next())
+print(numbers.length())
+print(numbers)
+print((numbers.head))
+print(numbers.sum())
+print(numbers.average())

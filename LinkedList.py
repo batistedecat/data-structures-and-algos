@@ -95,7 +95,7 @@ print()
 print("search(8)   ->", numbers.search(8))
 print("search(8)   ->", numbers.search(8).get_data())
 print("search(99)  ->", numbers.search(99))
-print("search Ada  ->", names.search("Ada").get_data())
+print("search Ada  ->", names.search("Ada").get_prev().get_data())
 
 print()
 node = numbers.search(8)

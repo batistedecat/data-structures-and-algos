@@ -39,7 +39,7 @@ class LinkedList: #Doubly linked
             self.head.set_prev(new_node)
         self.head = new_node
         self.size += 1
-
+    """
     def remove(self, data):
         curr = self.head
         while curr:
@@ -58,6 +58,30 @@ class LinkedList: #Doubly linked
             else:
                 curr = curr.get_next()
         return False #if no such node is found
+    """
+    #0(1) removal of node: if you know the node
+    def remove_node(self, node):
+        nxt = node.get_next()
+        prv = node.get_prev()
+
+        if nxt:
+            nxt.set_prev(prv)
+        if prv:
+            prv.set_next(nxt)
+        else:
+            self.head = nxt
+
+        node.set_prev(None)
+        node.set_next(None)
+        self.size -= 1
+        return node.get_data()
+    #O(n) removal: if you dont have the node abject
+    def remove(self, data):
+        node = self.search(data)
+        if node is None:
+            return False
+        self.remove_node(node)
+        return True
 
 
     def __repr__(self):
@@ -80,9 +104,15 @@ class LinkedList: #Doubly linked
             this_node = this_node.next
         return curr
     def average(self):
-        sum = float(self.sum())
-        count = float(self.length())
-        return sum / count
+        total, count = 0, 0
+        n = self.head
+        while n is not None:
+            d = n.get_data()
+            if isinstance(d, int):
+                total += d
+                count += 1
+            n = n.get_next()
+        return total / count if count else 0
 
 numbers = LinkedList()
 numbers.add(5)

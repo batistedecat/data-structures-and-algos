@@ -19,7 +19,7 @@ class Node:
     def set_prev(self,prev):
         self.prev = prev
 
-class LinkedList: #Doubly linked
+class DoublyLL: #Doubly linked
     def __init__(self, head = None):
         self.head = head
         self.size = 0
@@ -114,17 +114,17 @@ class LinkedList: #Doubly linked
             n = n.get_next()
         return total / count if count else 0
 
-numbers = LinkedList()
+numbers = DoublyLL()
 numbers.add(5)
 numbers.add(8)
 numbers.add(12)
 
-names = LinkedList()
+names = DoublyLL()
 names.add("Ada")
 names.add("Linus")
 names.add("Guido")
 
-empty = LinkedList()
+empty = DoublyLL()
 
 print("numbers:", repr(numbers))
 print("names  :", repr(names))

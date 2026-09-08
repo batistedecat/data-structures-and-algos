@@ -38,6 +38,16 @@ class SingleLL:
                 return this_node
             this_node = this_node.next
         return None
+    #doesn't work yet
+    def has_cycle(self):
+        slow = self.head
+        fast = self.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True #linked List has a cycle
+        return False #linked list does not have a cycle
 
 numbers = SingleLL()
 numbers.add(1)
@@ -46,7 +56,18 @@ numbers.add(3)
 numbers.add(4)
 numbers.add(5)
 
+
 print(numbers)
 numbers.reverse()
 print(numbers)
+
+numbers.add(6)
+#numbers.search(5).next = numbers.head
+
+
+print(numbers, "\n")
+print(numbers.head)
+
+print(numbers.search(6).next.data)
+
 print(numbers.search(2))

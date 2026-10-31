@@ -14,7 +14,7 @@ class LinkedList():
     #accessors
     def print_walk(self):
         curr = self.head
-        while curr.next is not None:
+        while curr and curr.next is not None:
             print(curr.data)
             curr = curr.next
     #mutators

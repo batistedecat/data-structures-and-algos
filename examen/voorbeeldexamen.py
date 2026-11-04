@@ -52,9 +52,10 @@ class Inventory():
 
     def find_batch(self, date):
         curr = self.head
-        while curr is None:
+        while curr != None:
             if curr.date == date:
                 return curr
+            curr = curr.next
         return None
 
 #=============3==============

@@ -57,7 +57,7 @@ class Inventory():
                 return curr
         return None
 
-#=============2==============
+#=============3==============
 def main():
     inventory = Inventory(article = "BOLT-M6")
     inventory.add_batch(date = "2026-01-15", quantity = 100, unit_cost = 8.5)

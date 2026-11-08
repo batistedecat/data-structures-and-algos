@@ -4,8 +4,7 @@
 # datum: zondag 8 november 2026
 
 
-
-#prio 1 > 2 > 3
+# prio 1 > 2 > 3
 class Ticket:
     # class Node:
     def __init__(self, klant, prioriteit):
@@ -16,21 +15,21 @@ class Ticket:
 
 class Wachtrij:
     def __init__(self):
-        self.head = None
-        #self.tail = None
+        self.first = None
+        # self.tail = None
         self.length = 0
 
     def voeg_toe(self, klant, prioriteit):
-        if (not klant) or prioriteit not in (1,2,3):
+        if (not klant) or prioriteit not in (1, 2, 3):
             return False
         node = Ticket(klant, prioriteit)
-        if self.head is None or prioriteit < self.head.prioriteit:
-            node.next = self.head
-            self.head = node
+        if self.first is None or prioriteit < self.first.prioriteit:
+            node.next = self.first
+            self.first = node
             self.length += 1
             return True
 
-        curr = self.head
+        curr = self.first
 
         while curr.next is not None:
             if curr.next.prioriteit > prioriteit:
@@ -47,8 +46,8 @@ class Wachtrij:
     def haal_af(self):
         if self.length == 0:
             return None
-        node = self.head
-        self.head = node.next
+        node = self.first
+        self.first = node.next
         self.length -= 1
         return node.klant
 
@@ -57,23 +56,25 @@ class Wachtrij:
 
     def namen(self):
         ans = []
-        curr = self.head
+        curr = self.first
 
         while curr is not None:
             ans.append(curr.klant)
             curr = curr.next
         return ans
 
-    def zoek(self,klant):
-        curr = self.head
+    def zoek(self, klant):
+        curr = self.first
         while curr is not None:
             if klant == curr.klant:
                 return curr
             curr = curr.next
         return None
 
-if __name__ == "__main__": # checks made by claude Opus
+
+if __name__ == "__main__":  # checks made by claude Opus
     fouten = 0
+
 
     def check(label, kreeg, verwacht):
         global fouten
@@ -82,6 +83,7 @@ if __name__ == "__main__": # checks made by claude Opus
         else:
             fouten += 1
             print("FOUT ", label, "| kreeg:", kreeg, "| verwacht:", verwacht)
+
 
     # empty queue
     w = Wachtrij()
@@ -125,4 +127,3 @@ if __name__ == "__main__": # checks made by claude Opus
 
     print()
     print("All tests passed" if fouten == 0 else f"{fouten} test(s) failed")
-

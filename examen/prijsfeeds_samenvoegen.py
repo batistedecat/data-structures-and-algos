@@ -39,14 +39,20 @@ def moving_average(feed, window):
     return res
 
 def largest_gap(feed):
-    prefix = [feed[0][1]]
+    if len(feed) < 2:
+        return None
+    best_gap = -1
+    best_date = None
     for i in range(1, len(feed)):
-        diff = feed[i][1] - feed[i-1][1]
-
+        gap = round(abs(feed[i][1] - feed[i - 1][1]), 2)
+        if gap > best_gap:
+            best_gap = gap
+            best_date = feed[i][0]
+    return [best_date, best_gap]
 
 def traagste_stap():
     # Geef hier de letter terug van de belangrijkste oorzaak, zie de opgave.
-    return '?'
+    return 'B'
 
 
 if __name__ == "__main__":
@@ -70,4 +76,7 @@ if __name__ == "__main__":
     # [['2026-01-05', 3]]
 
     print(moving_average([['2026-01-02', 9.8], ['2026-01-05', 10.0], ['2026-01-09', 10.2], ['2026-01-15', 11.2], ['2026-01-20', 11.0]],3))
+    print(largest_gap([['2026-01-02', 9.8], ['2026-01-05', 10.0], ['2026-01-09', 10.2], ['2026-01-15', 11.2], ['2026-01-20', 11.0]]))
+
+
 

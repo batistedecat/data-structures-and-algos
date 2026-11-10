@@ -1,0 +1,7 @@
+# kasboek januari
+
+2026-01-03;huur;-950.00
+2026-01-05;verkoop;1240.50
+stuk;kapot
+2026-01-09;verkoop;veel
+2026-01-12;verkoop;310.25
